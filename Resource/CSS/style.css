@@ -81,6 +81,10 @@ h1 {
     margin-right:3px;
 }
 
+a{
+    text-decoration: none;
+}
+
 /***********************************/
 
 
@@ -88,6 +92,7 @@ h1 {
 
 
 /***********************************/
+
 
 header {
     position: fixed;
@@ -107,11 +112,13 @@ header {
 .title {
     margin-top: 20px;
 }
+
 .header-contain{
     color: white;
 }
 
 .Navigation {
+    margin-right: 7%;
     margin-top: -4.7%;
     list-style: none;
     float: right;
@@ -121,6 +128,10 @@ header {
 .Navigation li {
     display: inline-block;
     margin: 0 10px;
+}
+
+.Navigation li a{
+    color: white;
 }
 
 section {
