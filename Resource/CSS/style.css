@@ -1,7 +1,5 @@
 * {
-    margin-top: 0;
-    /* margin-left: 4%; */
-    /* margin-right: 4%; */
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -16,6 +14,7 @@ html {
 .cleanfix {
     zoom: 1;
 }
+
 
 /* Section 纯粹是用float编排的要用这个clean float，否者这个Section的height = 0*/
 
@@ -46,11 +45,11 @@ h1 {
     letter-spacing: 3px;
 }
 
-.btn{
+.btn {
     /* list-style: none; */
     /* width:8%; */
-    display:inline-block;
-    background-color:rgba(15, 127, 232, 0.295);
+    display: inline-block;
+    background-color: rgba(15, 127, 232, 0.295);
     text-align: center;
     padding: 6px 8px;
     font-size: 60%;
@@ -60,30 +59,29 @@ h1 {
 }
 
 .btn:link,
-.bth:visited{
+.bth:visited {
     background-color: rgba(15, 127, 232, 0.295);
 }
 
 .btn:hover,
-.btn:active{
-    background-color:#F1F1F1;
+.btn:active {
+    background-color: #F1F1F1;
     transition: background-color 0.3s
 }
 
-.btn a{
+.btn a {
     text-decoration: none;
-    color:rgba(15, 127, 232, 0.849);
+    color: rgba(15, 127, 232, 0.849);
 }
 
-
-
-.icon-small{
-    margin-right:3px;
+.icon-small {
+    margin-right: 3px;
 }
 
-a{
+a {
     text-decoration: none;
 }
+
 
 /***********************************/
 
@@ -93,36 +91,35 @@ a{
 
 /***********************************/
 
-
 header {
     position: fixed;
     top: 0;
-    left:0;
-    width:100%;
+    left: 0;
+    width: 100%;
     background-color: rgba(15, 127, 232, 0.849);
     z-index: 9999;
     box-shadow: 0px 4px 20px gray;
     /* overflow: hidden; */
 }
 
+
 /* .main-content{
     position: absolute;
 } */
 
 .title {
-    margin-top: 20px;
+    margin:15px 7%;
 }
 
-.header-contain{
+.header-contain {
     color: white;
 }
 
 .Navigation {
     margin-right: 7%;
-    margin-top: -4.7%;
+    margin-top: -4%;
     list-style: none;
     float: right;
-
 }
 
 .Navigation li {
@@ -130,7 +127,7 @@ header {
     margin: 0 10px;
 }
 
-.Navigation li a{
+.Navigation li a {
     color: white;
 }
 
@@ -146,6 +143,8 @@ section {
 
 
 /***********************************/
+
+
 /* .jq-question-box{
     opacity: 0;
 }
@@ -153,35 +152,44 @@ section {
     opacity: 1;
 } */
 
-.intent-space{
+.intent-space {
     margin-top: 60px;
     background-color: #F1F1F1;
-
 }
 
-.question-section{
+.question-section {
     background-color: #F1F1F1;
 }
 
 .question-box {
     margin-bottom: 15px;
-    border-radius: 7px;
+    margin-left: 10%;
+    border-radius: 5px;
     padding: 15px;
     background-color: white;
-    box-shadow: 0 2px 4px rgba(128, 128, 128, 0.514);
+    box-shadow: 0 0px 2px rgba(128, 128, 128, 0.514);
 }
 
-.question-box div{
+.question-box div {
     margin-left: 20px;
 }
 
-.question{
-    margin-top: -13px;
+.question {
+    font-weight: 400;
+    font-size: 120%;
+    margin-top: 2px;
+    /* margin-bottom: 6px; */
 }
 
-.answer{
-    margin-top: -10px;
-    margin-bottom: -10px;
+.question a {
+    color: black;
+}
+
+.answer {
+    margin-top: 2px;
+    margin-bottom: 8px;
+    padding-left: 5%;
+    /* margin-left: 50%; */
 }
 
 
@@ -192,11 +200,34 @@ section {
 
 
 /***********************************/
- .side{
-     position: fixed;
-     background-color: white;
-     border-radius: 7px;
-     padding: 10px;
-     box-shadow: 0 2px 4px rgba(128, 128, 128, 0.514);
-     
+
+.side {
+    position: fixed;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0px 2px rgba(128, 128, 128, 0.514);
+}
+
+
+/***********************************/
+
+/* footer */
+
+/***********************************/
+
+footer {
+    width: 100%;
+    /* height: 70px; */
+    background-color: #333333;;
+    padding: 50px;
+    font-size: 80%;
+    vertical-align: middle;
+}
+
+.Producer {
+    /* width:70%; */
+    color: #888888;
+    text-align: center;
+    /* margin: auto auto; */
 }
