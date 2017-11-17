@@ -1,0 +1,28 @@
+{
+  "name": "cs546_final_project",
+  "version": "1.0.0",
+  "description": "The final Project for CS546",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hptg1994/CS546-FINAL.git"
+  },
+  "author": "Pintaigao He",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hptg1994/CS546-FINAL/issues"
+  },
+  "homepage": "https://github.com/hptg1994/CS546-FINAL#readme",
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "mongodb": "^2.1.18",
+    "node-uuid": "^1.4.7",
+    "normalize.css": "^7.0.0"
+  }
+}
