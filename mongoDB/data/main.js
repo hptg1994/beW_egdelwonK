@@ -40,12 +40,21 @@ let exportedMethods = {
     },
     updateQuestion(questionId,newquestion){
         return QA().then((QACollection) => {
-            QACollection.updateOne({_id:questionId},{$set:{question:newquestion}});
-        })
-    },
-    updateQuestionTitle(questionId,newTitle){
-        return QA().then((QACollection) => {
-            QACollection.updateOne({_id:questionId},{$set:{title:newTitle}});
+            let allAnswer = this.getAllAnswer(questionId);
+            let newQuestionbody = {};
+
+            if(newquestion.title){
+                newQuestionbody.title = newquestion.title;
+            }
+
+            if(newquestion.question){
+                newQuestionbody.question = newquestion.question;
+            }
+            if(allAnswer.Count != 0){
+                newQuestionbody.answer = allAnswer;
+            }
+            QACollection.updateOne({_id:questionId},{$set:newQuestionbody});
+
         })
     },
     deleteQuestion(questionId){
