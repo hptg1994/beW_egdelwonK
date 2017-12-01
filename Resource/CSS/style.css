@@ -96,7 +96,8 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(15, 127, 232, 0.849);
+    filter:20px;
+    background-color: rgba(15, 127, 232, 0.747);
     z-index: 9999;
     box-shadow: 0px 4px 20px gray;
     /* overflow: hidden; */
