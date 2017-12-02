@@ -13,7 +13,7 @@ let exportedMethods = {
     
     /* **************************************************** */
 
-    getQuestion(id){
+    getQuestionById(id){
         return QA().then(QACollection => {
             return QACollection.findOne({_id:id});
         })
@@ -24,11 +24,12 @@ let exportedMethods = {
             return allQuestion;
         })
     },
-    createQuestion(title,question){
+    createQuestion(title,user,question){
         return QA().then((QACollection) => {
             let questionbody = {
                 _id :uuid.v4,
                 title : title,
+                user:user,
                 question:question,
                 answer:[]
             };
@@ -54,7 +55,8 @@ let exportedMethods = {
                 newQuestionbody.answer = allAnswer;
             }
             QACollection.updateOne({_id:questionId},{$set:newQuestionbody});
-
+        }).then(() => {
+            return this.getQuestionById(questionId);
         })
     },
     deleteQuestion(questionId){
@@ -119,3 +121,5 @@ let exportedMethods = {
         })
     }
 }
+
+module.exports = exportedMethods;

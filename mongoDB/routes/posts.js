@@ -76,7 +76,6 @@ router.put("/:id", (req, res) => {
     }).catch(() => {
         res.status(404).json({ error: "Post not found" });
     });
-
 });
 
 router.delete("/:id", (req, res) => {
