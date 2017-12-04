@@ -18,7 +18,9 @@ router.get("/", (req, res) => {
 
 router.get("/question/:id", (req, res) => {
 	mainData.getQuestionById(req.params.id).then((question) => {
+		let answer = question.answer;
 		res.json(question);
+		console.log(answer);
 	});
 });
 
@@ -41,3 +43,11 @@ router.delete("question/:id",(req,res) => {
 		res.status(500).json({error:e});
 	});
 }) 
+
+/* **************************************************** */
+
+/* *********** Part of dealing with Answer ************ */
+
+/* **************************************************** */
+
+router.get("/question:id/answer")
