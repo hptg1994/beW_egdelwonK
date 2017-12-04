@@ -1,3 +1,4 @@
+/* Router */
 const express = require('express');
 const router = express.Router();
 const data = require("../data");
@@ -15,10 +16,16 @@ router.get("/", (req, res) => {
 	});
 });
 
-
 router.get("/question/:id", (req, res) => {
+	let questionBody;
+	let answerBody;
+	let commentBody ;
 	mainData.getQuestionById(req.params.id).then((question) => {
-		let answer = question.answer;
+		questionBody = question;
+		answerBody = question.answer;
+		answerBody.forEach(answer => {
+			commentBody = answerBody.Comment;
+		});		
 		res.json(question);
 		console.log(answer);
 	});
@@ -50,4 +57,4 @@ router.delete("question/:id",(req,res) => {
 
 /* **************************************************** */
 
-router.get("/question:id/answer")
+// router.get("/question:id/answer")

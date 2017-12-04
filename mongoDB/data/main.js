@@ -1,4 +1,4 @@
-
+/* Api Stuff */
 const mongoCollections = require("../config/mongoCollections");
 const QA = mongoCollections.Question_and_Answer;
 const users = require("./users")
