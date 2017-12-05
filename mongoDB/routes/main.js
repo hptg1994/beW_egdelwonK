@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 	});
 });
 
-router.get("/question/:id", (req, res) => {
+router.get("/:id", (req, res) => {
 	let questionBody;
 	let answerBody;
 	let commentBody ;
@@ -31,15 +31,20 @@ router.get("/question/:id", (req, res) => {
 	});
 });
 
-router.post("/question/", (req, res) => {
+router.post("/", (req, res) => {
 	let questionBody = req.body;
-	mainData.createQuestion(questionBody.title, questionBody.user, questionBody.question)
+	 return mainData.createQuestion(questionBody.title, questionBody.user, questionBody.question).then(questionid => {
+		 return mainData.getQuestionById(questionid).then(questions => {
+			res.json(questions);
+		 });
+	 });	
+	
 });
 
 router.put("question/:id", (req, res) => {
 	let updateQuestionBody = req.body;
 	return  mainData.updateQuestion(req.params.id,updateQuestionBody).then((result) => {
-		res.json(result);
+		return res.json(result);
 	})
 });
 
@@ -58,3 +63,4 @@ router.delete("question/:id",(req,res) => {
 /* **************************************************** */
 
 // router.get("/question:id/answer")
+module.exports = router;

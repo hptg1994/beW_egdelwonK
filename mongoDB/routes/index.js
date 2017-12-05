@@ -1,13 +1,13 @@
-// const postRoutes = require("./posts");
 const mainRoutes = require("./main");
-const userRoutes = require("./users");
+// const userRoutes = require("./users");
 const path = require('path');
 
 const constructorMethod = (app) => {
-    app.use("/", mainRoutes);
-    // app.use(postRoutes);
-    app.use("/users", userRoutes);
-
+    app.use("/question", mainRoutes);
+    app.use("*", (req, res) => {
+		res.status(404).json({error: "Request not found"});
+	});
+    // app.use("/users", userRoutes);
     // app.use("*", (req, res) => {
     //     res.redirect("/posts");
     // })
