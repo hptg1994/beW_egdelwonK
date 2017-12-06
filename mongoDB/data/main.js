@@ -70,6 +70,7 @@ let exportedMethods = {
     /* ********** Part of dealing with Answers ************ */
 
     /* **************************************************** */
+
     getAllAnswer(questionId){
         return QA().then(QACollection => {
             return this.getQuestion(id)
@@ -119,6 +120,42 @@ let exportedMethods = {
         }).then((question) => {
             
         })
+    },
+
+    /* **************************************************** */
+
+    /* ********** Part of dealing with Comment ************ */
+
+    /* **************************************************** */
+
+    addComment(comment,user,answerId){
+        let commentBody = {
+            _id : uuid.v4,
+            comment : comment,
+            user: user
+        }
+        return this.getAllComment(answerId).then((commnetBody) => {
+            commnetBody.append(commentBody);
+        });
+    },
+
+    getCommentById(answerId,commentId){
+        return QA().then((QACollection) => {
+            let answerBody = this.getAnswerById(answerId);
+              
+        })
+    },
+
+    getAllComment(answerId){
+        return this.getAnswerById(answerId).then((answer) => {
+            return answer.Comment;
+        });
+    },
+    deleteCommnet(answerId,commentId){
+        let answerBody = this.getAnswerById(answerId);
+        return QA().then((QACollection) => {
+
+        });
     }
 }
 

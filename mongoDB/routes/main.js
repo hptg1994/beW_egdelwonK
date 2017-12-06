@@ -62,5 +62,9 @@ router.delete("question/:id",(req,res) => {
 
 /* **************************************************** */
 
+// router.post("/answer:id/"){
+// 	mainData.
+// }
+
 // router.get("/question:id/answer")
 module.exports = router;
