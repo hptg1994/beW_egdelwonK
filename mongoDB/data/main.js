@@ -140,10 +140,14 @@ let exportedMethods = {
     },
 
     getCommentById(answerId,commentId){
-        return QA().then((QACollection) => {
-            let answerBody = this.getAnswerById(answerId);
-              
+        return getAllComment(answerId).then((commentBody) => {
+            commentBody.find((comment) => {
+                
+            })
         })
+        /* return QA().then((QACollection) => {
+            QACollection.findOne()
+        }) */
     },
 
     getAllComment(answerId){
