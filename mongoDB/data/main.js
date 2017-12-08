@@ -24,12 +24,12 @@ let exportedMethods = {
             return allQuestion;
         })
     },
-    createQuestion(title,user,question){
+    createQuestion(title,userId,question){
         return QA().then((QACollection) => {
             let questionbody = {
                 _id :uuid.v4,
                 title : title,
-                user:user,
+                userIds:userId,
                 question:question,
                 answer:[]
             };
