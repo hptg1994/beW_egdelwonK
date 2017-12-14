@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+    font-size: 20px;
+    background-color: #F1F1F1;
+}
+
+.cleanfix {
+    zoom: 1;
+}
+
+
+/* Section 纯粹是用float编排的要用这个clean float，否者这个Section的height = 0*/
+
+.cleanfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+}
+
+
+/***********************************/
+
+
+/* Reused */
+
+
+/***********************************/
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-weight: 300px;
+    letter-spacing: 3px;
+}
+
+.btn {
+    /* list-style: none; */
+    /* width:8%; */
+    display: inline-block;
+    background-color: rgba(15, 127, 232, 0.295);
+    text-align: center;
+    /* margin-right: 100px; */
+    padding: 6px 8px;
+    font-size: 60%;
+    border-radius: 4px;
+    margin-right: -15px;
+    /* padding: 10px; */
+}
+
+.btn:link,
+.bth:visited {
+    background-color: rgba(15, 127, 232, 0.295);
+}
+
+.btn:hover,
+.btn:active {
+    background-color: #F1F1F1;
+    transition: background-color 0.3s
+}
+
+.btn a {
+    text-decoration: none;
+    color: rgba(15, 127, 232, 0.849);
+}
+
+.btn-dccept,.btn-comment{
+    margin-left: 20px;
+}
+
+.btn-comment a i{
+    letter-spacing: 1px;
+}
+
+.icon-small {
+    margin-right: 3px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+/***********************************/
+
+
+/* Header */
+
+
+/***********************************/
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    filter:20px;
+    background-color: rgba(15, 127, 232, 0.747);
+    z-index: 9999;
+    box-shadow: 0px 4px 20px gray;
+    /* overflow: hidden; */
+}
+
+
+/* .main-content{
+    position: absolute;
+} */
+
+.title {
+    margin:15px 7%;
+}
+
+.header-contain {
+    color: white;
+}
+
+.Navigation {
+    margin-right: 7%;
+    margin-top: -4%;
+    list-style: none;
+    float: right;
+}
+
+.Navigation li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.Navigation li a {
+    color: white;
+}
+
+section {
+    padding: 10px;
+}
+
+
+/***********************************/
+
+
+/* Main Section */
+
+
+/***********************************/
+
+
+/* .jq-question-box{
+    opacity: 0;
+}
+.jq-question-box.animated{
+    opacity: 1;
+} */
+
+.intent-space {
+    margin-top: 40px;
+    background-color: #F1F1F1;
+}
+
+.question-section,
+.answer-section,
+.comment-section{
+    background-color: #F1F1F1;
+}
+
+.question-box {
+    /* margin-bottom: 15px; */
+    margin-left: 10%;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 0px 2px rgba(128, 128, 128, 0.514);
+}
+
+.question-box div {
+    margin-left: 20px;
+}
+
+.question {
+    font-weight: 400;
+    font-size: 120%;
+    margin-top: 2px;
+    /* margin-bottom: 6px; */
+}
+
+.question a {
+    color: black;
+    font-size: 120%;
+}
+
+.questionDesctiption{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+/* .answer {
+    margin-top: 2px;
+    margin-bottom: 8px;
+    padding-left: 5%;
+ 
+} */
+
+/***********************************/
+
+
+/* Answer Section */
+
+
+/***********************************/
+.answer-box{
+    margin-top: -20px;
+    margin-left: 11.3%;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 0px 2px rgba(128, 128, 128, 0.514);
+}
+
+.Author{
+    margin-bottom: 5px;
+}
+
+.answer{
+    margin-bottom: 13px;
+}
+
+
+/***********************************/
+
+
+/* Comment Section */
+
+
+/***********************************/
+
+.comment-box{
+    margin-top: -40px;
+    /* margin-bottom: 15px; */
+    margin-left: 11.3%;
+    margin-bottom: -10px;
+    /* border-radius: 5px; */
+    border: 2px solid rgba(128, 128, 128, 0.24) ;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 0px 2px rgba(128, 128, 128, 0.514);
+}
+.comment-author{
+    float: right;
+    font-size: 70%;
+    margin-top: -22px;
+}
+.comment p{
+    font-size: 80%;
+}
+
+
+/***********************************/
+
+/* footer */
+
+/***********************************/
+
+footer {
+    width: 100%;
+    /* height: 70px; */
+    background-color: #333333;;
+    padding: 50px;
+    font-size: 80%;
+    vertical-align: middle;
+}
+
+.Producer {
+    /* width:70%; */
+    color: #888888;
+    text-align: center;
+    /* margin: auto auto; */
+}

@@ -1,37 +1,88 @@
-/* User API */
-const mongoCollection = require("../config/mongoCollections");
-const users = mongoCollection.users;
-const QA =mongoCollection.Question_and_Answer;
-const uuid = require('uuid');
+const { mongoose } = require('./../config/mongoose');
+const { User } = require('../Model/user');
+const { ObjectID } = require('mongodb');
 
 let exportedMethods = {
-    getUserById(userId){
-        return users().then(UserCollection => {
-            return UserCollection.findOne({_id:userId}).then((user) => {
-                if(!user) throw "User Not found";
-                return user;
+    getAllUsers() {
+        return User.find({}, function(err, users) {
+            var userMap = {};
+            users.forEach(function(user) {
+                userMap[user._id] = user;
             });
+            return userMap;
         });
     },
-
-    createusers(userName,userPassword){
-        let user = {
-            _id: uuid.v1,
-            username : userName,
-            userPassword : userPassword
+    getUserById(id) {
+        return User.find({ _id: id }).then((user) => {
+            if (!user) throw "No such user found";
+            return user;
+        });
+    },
+    addUser(newUser) {
+        var user = new User(newUser);
+        return user.save(newUser).then((doc) => {
+            return doc;
+        }).catch((error) => {
+            return error;
+        });
+    },
+    updateUser(user, id) {
+        if (!ObjectID.isValid(id)) {
+            throw "Invalid ObjectID";
         }
-        return users().then(UserCollection => {
-            return UserCollection.insertOne(user).then((newInsertInformation) => {
-                return newInsertInformation.insertedId;
-            }).then(newId => {
-                return this.getUserById(newId);
-            })
+        return User.findOneAndUpdate({
+            _id: id
+        }, {
+            $set: user
+        }, {
+            new: true
+        }).then((user) => {
+            if (!user) {
+                return;
+            }
+            return user;
+        }).catch((error) => {
+            return error;
         });
     },
-
-    getQuestionByUserId(userId) {
-        return QA().then(questionBody => {
-            questionBody.find({userId : userId});
+    favRecipe(userid, recipeid) {
+        let favRecipes = { recipeid };
+        return User.findOneAndUpdate({
+            _id: userid
+        }, {
+            $push: { favRecipes: favRecipes }
+        }, {
+            safe: true,
+            upsert: true
+        }).then((user) => {
+            return user;
+        }).catch((error) => {
+            return error;
+        });
+    },
+    followUser(id, myDetails, followerid, followerDetails) {
+        return User.findOneAndUpdate({
+            _id: id
+        }, {
+            $push: { followers: followerDetails }
+        }, {
+            safe: true,
+            upsert: true
+        }).then((user) => {
+            return User.findOneAndUpdate({
+                _id: followerid
+            }, {
+                $push: { followees: myDetails }
+            }, {
+                safe: true,
+                upsert: true
+            }).then((user1) => {
+                return user1;
+            });
+        }).catch((error) => {
+            return error;
         });
     }
-}
+};
+
+module.exports = exportedMethods;

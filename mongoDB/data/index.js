@@ -1,5 +1,5 @@
 const mainRoutes = require("./main");
-const userRoutes = require("./user2");
+const userRoutes = require("./user");
 
 module.exports = {
     users: userRoutes,

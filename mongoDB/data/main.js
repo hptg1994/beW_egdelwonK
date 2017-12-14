@@ -1,69 +1,56 @@
 /* Api Stuff */
-const mongoCollections = require("../config/mongoCollections");
-const QA = mongoCollections.Question_and_Answer;
-const users = require("./users")
-const uuid = require("node-uuid");
-
+const mongoose = require("../config/mongoose");
+const {QA} = require("../Model/main");
 
 let exportedMethods = {
-
     /* **************************************************** */
 
     /* ********** Part of dealing with Question *********** */
     
     /* **************************************************** */
-
     getQuestionById(id){
-        return QA().then(QACollection => {
-            return QACollection.findOne({_id:id});
-        })
+        return QA.find({_id:id}).exec().then((newQuestionbody) => {
+            return questionbody;
+        }).catch(error => {
+            return error;
+        });
     },
+
     getAllQuestion(){
-        return QA().then(QACollection => {
-            var allQuestion =  QACollection.find({}).toArray();
-            return allQuestion;
-        })
+        return QA.find({}).exec().then((allquestion) => {
+            return allquestion;
+        });
     },
-    createQuestion(title,userId,question){
-        return QA().then((QACollection) => {
-            let questionbody = {
-                _id :uuid.v4,
-                title : title,
-                userIds:userId,
-                question:question,
-                answer:[]
-            };
+    // getAllQuestion(){
+    //     return QA.find({},function(err,question){
+    //         var QAMap = {};
+    //         question.foreach(questionbody => {
+    //             QAMap[questionbody._id] = questionbody;
+    //         });
+    //         return QAMap;
+    //     })
+    // },
+    createQuestion(newQuestion){
+        var newQuestion = new QA(newQuestion);
+        return newQuestion.save(newQuestion).then((questionbody) => {
+            return questionbody;
+        }).catch((error) => {
+            return error;
+        });
+    },
 
-            return QACollection.insertOne(questionbody).then((information) => {
-                return information.insertedId;
-            })
-        })
-    },
     updateQuestion(questionId,newquestion){
-        return QA().then((QACollection) => {
-            let allAnswer = this.getAllAnswer(questionId);
-            let newQuestionbody = {};
-
-            if(newquestion.title){
-                newQuestionbody.title = newquestion.title;
-            }
-
-            if(newquestion.question){
-                newQuestionbody.question = newquestion.question;
-            }
-            if(allAnswer.Count != 0){
-                newQuestionbody.answer = allAnswer;
-            }
-            QACollection.updateOne({_id:questionId},{$set:newQuestionbody});
-        }).then(() => {
-            return this.getQuestionById(questionId);
+        return QA.findOneAndUpdate({_id:questionId},{$set:newquestion},{new:true}).then((questionbody) => {
+            return questionbody;
+        }).catch((error) => {
+            return error;
         })
     },
-    deleteQuestion(questionId){
-        return QA().then((QACollection) => {
-            QACollection.remove({_id:questionId});
-        })
-    },
+    // deleteQuestion(questionId){
+    //     return QA().then((QACollection) => {
+    //         QACollection.remove({_id:questionId});
+    //     })
+    // },
 
     /* **************************************************** */
 
@@ -72,54 +59,37 @@ let exportedMethods = {
     /* **************************************************** */
 
     getAllAnswer(questionId){
-        return QA().then(QACollection => {
-            return this.getQuestion(id)
-        }).then((question) =>{
-            var answerBody = question.answer;
-            return answerBody;
+        return this.getQuestionById(questionId).then((questionbody) => {
+            return questionbody.answer.toArray();
         })
     },
-    getAnswerById(questionId,answerId){
-        return QA().then(QACollection => {
-            var answerSet = this.getAllAnswer(questionId);
-            return answerSet;
-        }).then((answerSet) => {
-            return answerSet.findOne({_id:answerId});
-        }).then((answer) => {
-            if(!answer) throw "Answer Not Found";
-            return answer;
-        })
-    },
-    addAnswerToQuestion(questionId,answer){
-        return QA().then(QACollection => {
-            return this.getQuestion(questionId)
-        }).then((question) => {
-            let answerBody ={
-                _id : uuid.v4,
-                answer : answer,
-                agree : 0,
-                user : [],
-                Comment : []
-            };
-            return question.answer.push(answerBody);
 
+    getAnswerById(questionId,answerId){
+        return QA.find({_id:questionId}).then((questionbody) => {
+            let answerBody = questionbody.answer;
+            return answerBody.find((answer) => {
+                return answer._id = answerId;
+            });
+            return answerBody;
+        }).catch((error) => {
+            throw "Can't find this answer";
+        })
+    },
+
+    addAnswerToQuestion(questionId,answer){
+
+        return QA.findOneAndUpdate({_id:questionId},{$push:{answer:answer}},{safe:true,upsert:true}).then((questionbody) => {
+            return questionbody;
         })
     },
     agreeAnswer(questionId,answerId){
-        return QA().then(QACollection => {
-            return this.getAnswerById(questionId,answerId)
-        }).then((answer) => {
-            answer.agree += 1;
-        })
+        let agreeCount = this.getAnswerById(answerId).agree + 1;
+        return QA.update({_id:questionId,"answer._id":answerId},{$set:{"answer.$.agree": agreeCount}});
     },
-    
-    deleteAnswer(questionid,answerId){
-        return QA().then(QACollection => {
-            var questionbody = this.getAllQuestion(questionid);
-            return questionbody;
-        }).then((question) => {
-            
-        })
+
+    digreeAnswer(questionId,answerId){
+        let agreeCount = this.getAnswerById(answerId).agree - 1;
+        return QA.update({_id:questionId,"answer._id":answerId},{$set:{"answer.$.agree": agreeCount}});
     },
 
     /* **************************************************** */
