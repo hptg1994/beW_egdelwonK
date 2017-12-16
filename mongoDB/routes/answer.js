@@ -23,8 +23,9 @@ router.get("/:id",(req,res) => {
 });
 
 
-router.post("/:questionId",(req,res) => {
-	let answer = {
+router.post("/:questionId/postAnswer",(req,res) => {
+	console.log("Did go in here");
+	let answerbody = {
 		username:req.user.username,
 		questionId:req.params.questionId,
 		answer_description : req.body.answerdescription,
@@ -32,33 +33,40 @@ router.post("/:questionId",(req,res) => {
 		disagree : 0,
 		comment :[]
 	};
-	return mainData.addAnswerToQuestion(req.params.questionId,answer).then((questionBody) => {
+	return mainData.addAnswerToQuestion(req.params.questionId,answerbody).then((questionBody) => {
 		res.redirect(`/question/${req.params.questionId}`);
 	})
 })
 
-// router.post("/:questionid/:answerid",(req,res) => {
-// 	if(req.isAuthenticated()){
-// 		if(req.params.agreebtn){
-// 			return mainData.agreeAnswer(req.params.questionid,req.params.answerid).then(() => {
-// 				return res.redirect(`/question/${req.params.questionid}`);
-// 			});
-// 		}
-// 		if(req.params.disagreebtn){
-// 			return mainData.agreeAnswer(req.params.questionid,req.params.answerid).then(() => {
+router.put("/:questionid/:answerid/agree",(req,res) => {
+	if(req.isAuthenticated()){
+			return mainData.agreeAnswer(req.params.questionid,req.params.answerid).then(() => {
+				return res.redirect(`/question/${req.params.questionid}`);
+			});
+		}
+		// if(req.params.disagreebtn){
+		// 	return mainData.agreeAnswer(req.params.questionid,req.params.answerid).then(() => {
 
-// 				return res.redirect(`/question/`)
-// 			});
-// 		}
-// 	}
-// })
-
-router.post("/:questionId/:answerId/postComment",(req,res) => {
-	console.log("Did go in here");
-	return mainData.addComment(req.body.commentText,req.user.username,req.params.answerId,req.params.questionId).then(() => {
-		res.redirect(`question/${req.params.questionId}`)
-	})
+		// 		return res.redirect(`/question/`)
+		// 	});
+		// }
 })
+
+router.put("/:questionid/:answerid/disgree",(req,res) => {
+	if(req.isAuthenticated()){
+		
+		return mainData.digreeAnswer(req.params.questionid,req.params.answerid).then(() => {
+			return res.redirect(`/question/${req.params.questionid}`);
+		});
+	}
+})
+
+// router.post("/:answerId/:questionId/postComment",(req,res) => {
+// 	// console.log("Did go in here");
+// 	return mainData.addComment(req.body.commentText,req.user.username,req.params.answerId,req.params.questionId).then(() => {
+// 		res.redirect(`question/${req.params.questionId}`)
+// 	})
+// })
 
 // router.get("/", (req, res) => {
 // 	if (req.isAuthenticated()) {

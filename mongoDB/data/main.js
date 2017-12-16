@@ -91,9 +91,14 @@ let exportedMethods = {
     addAnswerToQuestion(questionId,answer){
         return QA.findOneAndUpdate({_id:questionId},{$push:{answer:answer}},{safe:true,upsert:true}).then((questionbody) => {
             return questionbody;
+        }).catch(error => {
+            console.log("Oh mistake");
+            console.log(error);
+            throw error;
         })
     },
     agreeAnswer(questionId,answerId){
+        console.log("did go in here ");
         let agreeCount = this.getAnswerById(answerId).agree + 1;
         return QA.update({_id:questionId,"answer._id":answerId},{$set:{"answer.$.agree": agreeCount}});
     },

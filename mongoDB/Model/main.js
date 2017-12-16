@@ -26,31 +26,6 @@ const QA = mongoose.model('Question_Answer', {
             username:String
         }]
     }]
-    // reviews: [{
-    //     name: String,
-    //     content: String,
-    //     date: {
-    //         type: Date,
-    //         default: Date.now
-    //     },
-    //     profilePicPath: String
-    // }],
-    // date: {
-    //     type: Date,
-    //     default: Date.now
-    // },
-    // meta: {
-    //     votes: Number,
-    //     favs: Number
-    // },
-    // creator: {
-    //     _id: String,
-    //     name: String,
-    // },
-    // category: [{
-    //     type: String,
-    //     required: true
-    // }]
 });
 
 module.exports = {
