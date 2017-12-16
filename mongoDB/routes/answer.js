@@ -53,11 +53,12 @@ router.post("/:questionId",(req,res) => {
 // 	}
 // })
 
-// router.post("/:questionId/:answerId/postComment",(req,res) => {
-// 	return mainData.addComment(req.body.commentText,req.user.username,req.params.answerId,req.params.questionId).then(() => {
-// 		res.redirect(`question/${req.params.questionId}`)
-// 	})
-// })
+router.post("/:questionId/:answerId/postComment",(req,res) => {
+	console.log("Did go in here");
+	return mainData.addComment(req.body.commentText,req.user.username,req.params.answerId,req.params.questionId).then(() => {
+		res.redirect(`question/${req.params.questionId}`)
+	})
+})
 
 // router.get("/", (req, res) => {
 // 	if (req.isAuthenticated()) {

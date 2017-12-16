@@ -1,12 +1,10 @@
 <header>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
-
     <link rel="stylesheet" href="../../public/css/QuestionStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <nav>
         <div class="blur"></div>
-
         <div class="header-cotain">
             <h1 class="title" onclick="location.href='/main';">Knowledge</h1>
             <button type="submit" class="PostQuestion" data-toggle="modal" data-target="#myModal">Ask</button>
@@ -32,7 +30,7 @@
                 <a href="#">{{QuestionBody.title}}</a>
             </div>
             <div class="questionDesctiption">
-                <p> {{QuestionBody.description}}</p>
+                <p>{{QuestionBody.description}}</p>
             </div>
             <div class="questionAuthor">
                 <p>{{QuestionBody.author}}</p>
@@ -60,15 +58,33 @@
                 </form>
                 <form class="btnbtn btn-dccept" action="/question/{{questionId}}/{{_id}}/disgree" method="post">
                     <i class="ion-arrow-down-b icon-small"></i>
-                    <input id="disagreebtn" class="disagreebtn" name="disagreebtn" type="submit" value="{{disagree}}" />
+                    <input id="disagreebtn" class="disagreebtn" name="disagreebtn" type="button" value="{{disagree}}" />
                 </form>
                 <form class="btnbtn btn-comment js-comment-icon">
                     <i class="ion-chatbubble icon-small"></i>
-                    <input class="commentbtn" name="commentbtn" data-toggle="collapse" data-target="#demo" type="submit" value="comment" />
+                    <input class="commentbtn" name="commentbtn" data-toggle="collapse" data-target="#demo" type="button" value="comment" />
                 </form>
             </div>
         </div>
+        {{#each comment}}
+        <section class="comment-section js-comment-section">
+            <div class="container comment-box">
+                <div class="Acomment">
+                    <div class="comment">
+                        <p>{{comment_description}}<p>
+                    </div>
+                    <div class="comment-author">
+                        <p>{{username}}</p>
+                    </div>
+                </div>
+                {{!--
+                <br style="clear:both;" /> --}}
+            </div>
+        </section>
+        {{/each}}
     </section>
+
+
 
     <div id="demo" class="collapse container commentInput">
         <form class="input-append" method="post" action="/question/{{questionId}}/{{_id}}/postComment">
@@ -100,5 +116,6 @@
 {{/if}}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../../public/bootstrap/js/bootstrap.min.js"></script>
 <script src="../public/JS/jquery.waypoints.min.js"></script>
 <script src="../../public/js/QuestionScript.js"></script>
