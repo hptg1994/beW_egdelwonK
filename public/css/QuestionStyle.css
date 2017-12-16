@@ -6,6 +6,10 @@ html {
     background-color: #F1F1F1;
 }
 
+body{
+    background-color: #F1F1F1
+}
+
 .cleanfix {
     zoom: 1;
 }
@@ -121,24 +125,39 @@ header {
     /* overflow: hidden; */
 }
 
+.header-cotain button{
+    position: absolute;
+    /* font-size: 120%; */
+    left:60%;
+    top:15px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 700;
+    border-color: rgba(15, 127, 232, 0.747);
+    color: rgba(15, 127, 232, 0.747);
+} 
+
+.title {
+    color: white;
+    margin-left:20%;
+}
+
 
 /* .main-content{
     position: absolute;
 } */
 
-.title {
-    margin:15px 7%;
-}
-
-.header-contain {
-    color: white;
-}
 
 .Navigation {
-    margin-right: 7%;
-    margin-top: -4%;
+    position: absolute;
+    /* float: right; */
+    right:-350px;
+    top: 45px;
+    margin-right: 45%;
+    margin-top: -25px;
+    font-size: 110%;
+    /* margin-left: 20px; */
     list-style: none;
-    float: right;
 }
 
 .Navigation li {
@@ -148,7 +167,10 @@ header {
 
 .Navigation li a {
     color: white;
+    text-decoration: none;
+    font-size: 120%;
 }
+
 
 section {
     padding: 10px;
@@ -247,7 +269,7 @@ section {
 
 .answer{
     margin-bottom: 13px;
-    font-size: 120%;
+    font-size: 140%;
 }
 
 
@@ -270,13 +292,15 @@ section {
 }
 
 .Acomment{
+    position: relative;
     padding: 10px;
-    border:2px dashed rgba(128, 128, 128, 0.288);
+    border:3px dashed rgba(128, 128, 128, 0.288);
 }
 .comment-author{
-    float: right;
+    position: absolute;
     font-size: 70%;
-    margin-top: -30px;
+    right:1px;
+    margin-top: -10px;
 }
 .comment p{
     font-size: 80%;
@@ -302,11 +326,16 @@ form{
     border-radius: 5px;
 }
 
+.Write_answer_section{
+    position: relative;
+}
+
 .submit-btn{
     position: absolute;
-    top:100px;
+    top:110px;
+
     /* background-color: black; */
-    right:20%;
+    right:33%;
     /* width: 80%;  */
     /* margin-top: -8px; */
     /* background-color: white; */
@@ -327,6 +356,15 @@ form{
     /* 渐变,出现时间延迟，包括背景颜色，边框，element颜色 */
 }
 
+/***********************************/
+
+/* Comment */
+
+/***********************************/
+.commentInput{
+    background-color: #F1F1F1;
+    margin-bottom: 10px;
+}
 
 /***********************************/
 

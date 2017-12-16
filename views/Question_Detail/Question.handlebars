@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <nav>
         <div class="blur"></div>
-        <div class="row header-contain">
-            <h1 class="title">Knowledge</h1>
+
+        <div class="header-cotain">
+            <h1 class="title" onclick="location.href='/main';">Knowledge</h1>
+            <button type="submit" class="PostQuestion" data-toggle="modal" data-target="#myModal">Ask</button>
             <ul class="Navigation">
                 <li>
                     <a href="/start/login">Log in</a>
@@ -53,42 +55,31 @@
                     <p>{{answer_description}}</p>
                 </div>
                 <form id="answer_agree" class="btnbtn btn-accept" action="/question/{{questionId}}/{{_id}}" method="post">
-                        <i class="ion-arrow-up-b icon-small"></i>
-                        <input id="agreebtn" class = "agreebtn" name = "agreebtn" type = "submit" value = "{{agree}}" />
+                    <i class="ion-arrow-up-b icon-small"></i>
+                    <input id="agreebtn" class="agreebtn" name="agreebtn" type="submit" value="{{agree}}" />
                 </form>
                 <form class="btnbtn btn-dccept" action="/question/{{questionId}}/{{_id}}/disgree" method="post">
-                        <i class="ion-arrow-down-b icon-small"></i> 
-                        <input id="disagreebtn" class = "disagreebtn" name = "disagreebtn" type = "submit" value = "{{disagree}}" />
+                    <i class="ion-arrow-down-b icon-small"></i>
+                    <input id="disagreebtn" class="disagreebtn" name="disagreebtn" type="submit" value="{{disagree}}" />
                 </form>
-                <form class="btnbtn btn-comment js-comment-icon" action="/question//{{questionId}}/{{_id}}" method="post">
-                        <i class="ion-chatbubble icon-small"></i>
-                        <input class = "commentbtn" name = "commentbtn" type = "submit" value = "comment" />
+                <form class="btnbtn btn-comment js-comment-icon">
+                    <i class="ion-chatbubble icon-small"></i>
+                    <input class="commentbtn" name="commentbtn" data-toggle="collapse" data-target="#demo" type="submit" value="comment" />
                 </form>
             </div>
         </div>
     </section>
-    {{#each comment}}
-    <section class="comment-section js-comment-section">
-        <div class="container comment-box">
-            <div class="Acomment">
-                <div class="comment">
-                </div>
-                <div class="comment-author">
-                    <p>{{username}}</p>
-                </div>
-            </div>
-            {{!--
-            <br style="clear:both;" /> --}}
-        </div>
 
-    </section>
-    {{/each}}
+    <div id="demo" class="collapse container commentInput">
+        <form class="input-append" method="post" action="/question/{{questionId}}/{{_id}}/postComment">
+            <input class=" " id="appendedInputButton" type="text" placeholder="What do you think?" name="commentText">
+            <input class="btn" type="submit" value="Comment it!" name="postComment">
+    </div>
 </div>
 {{/each}}
-
 <section class="Write_answer_section">
     <div class="container">
-        <form action="/question/{{questionId}}" method="post">
+        <form action="/question/{{questionId}}" method="post" class="write_answer_form">
             <div class="question_post_area">
                 <textarea name="answerdescription" placeholder="Write down your answer"></textarea>
             </div>
@@ -97,8 +88,8 @@
             </div>
         </form>
     </div>
-
 </section>
+
 
 {{#if question.length}}
 <footer>

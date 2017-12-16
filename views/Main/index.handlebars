@@ -1,10 +1,54 @@
 <header>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/style.css">
-    {{!-- <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css"> --}}
     <nav>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <div class="blur"></div>
+        
+        <div class="header-cotain">
+                <h1 class="title">Knowledge</h1>
+            <button type="submit" class="PostQuestion" data-toggle="modal" data-target="#myModal">Ask</button>
+            <ul class="Navigation">
+                <li>
+                    <a href="/start/login">Log in</a>
+                </li>
+                <li>
+                    <a href="/start/signup">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<section class="intent-space"></section>
+
+<section class="question-section">
+    <div class="container">
+        <div class="box">
+            {{#each questionArray}}
+            <div class="question-box jq-question-box">
+                <div class="author">
+                    <p> {{username}}</p>
+                </div>
+                <div class="question">
+                    <a href="/question/{{_id}}"> {{title}}</a>
+                </div>
+                <div class="answer">
+                    <p> {{description}}</p>
+                </div>
+                <div class="btnbtn btn-accept">
+                    <a href="#">
+                        <i class="ion-arrow-up-b icon-small"></i>54 </a>
+                </div>
+                <div class="btnbtn btn-dccept">
+                    <a href="#">
+                        <i class="ion-arrow-down-b icon-small"></i>46 </a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="height:100px">
+            <div class="modal-dialog" >
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
@@ -16,8 +60,8 @@
                         <div class="modal-body">
                             <input id="question_input" class="form-control" type="text" placeholder="Your Question" name="question_input">
                             <p>Description of Question: </p>
-                            <input id="question_description" class="form-control" type="text" placeholder="Background,Situation or any other detial information"
-                                name="question_description">
+                            <textarea id="question_description" class="form-control" type="text" placeholder="Background,Situation or any other detial information"
+                                name="question_description"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">close </button>
@@ -29,63 +73,11 @@
             </div>
             <!-- /.modal -->
         </div>
-
-        <div class="blur"></div>
-        <div class="header-contain">
-            <div class="span3 offset2">
-                <h1 class="title">Knowledge</h1>
-            </div>
-                <button type="submit" class="PostQuestion" data-toggle="modal" data-target="#myModal">Ask</button>
-            <div class="span3 offset1">
-            </div>
-            <div class="span5">
-                <ul class="Navigation">
-                    <li>
-                        <a href="/start/login">Log in</a>
-                    </li>
-                    <li>
-                        <a href="/start/signup">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-<section class="intent-space"></section>
-<section class="question-section">
-    <div class="container">
-        <div class="box"> 
-            {{#each questionArray}} 
-            <div class="question-box jq-question-box">
-                <div class="author">
-                    <p> {{username}}</p>
-                </div>
-                <div class="question">
-                    <a href="/question/{{_id}}"> {{description}}title</a>
-                </div>
-                <div class="answer">
-                    <p> {{answer.answe_rdescription}}description</p>
-                </div>
-                <div class="btnbtn btn-accept">
-                    <a href="#">
-                        <i class="ion-arrow-up-b icon-small"></i>54 </a>
-                </div>
-                <div class="btnbtn btn-dccept">
-                    <a href="#">
-                        <i class="ion-arrow-down-b icon-small"></i>46 </a>
-                </div>
-            </div> 
-            {{/each}}
-        </div>
-    </div>
-</section> 
 {{#if questionArray.length}}
 <footer>
     <div class="row Producer">
         <p>Copyright&copy; 2017 by Pintaigao He.All right reserved</p>
     </div>
-</footer> {{/if}} {{!--
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> --}}
+</footer> {{/if}}
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="../../public/bootstrap/js/bootstrap.min.js"></script>
-<!-- <script src="./Resource/JS/script.js"></script>-->

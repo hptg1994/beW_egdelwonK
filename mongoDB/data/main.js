@@ -77,11 +77,11 @@ let exportedMethods = {
 
     getAnswerById(questionId,answerId){
         return QA.find({_id:questionId}).then((questionbody) => {
-
             let answerBody = questionbody[0].answer;
             return answerBody.find((answer) => {
                 return answer._id = answerId;
             });
+            console.log(answerBody);
             return answerBody;
         }).catch((error) => {
             throw "Can't find this answer";
@@ -109,15 +109,20 @@ let exportedMethods = {
 
     /* **************************************************** */
 
-    addComment(comment,user,answerId){
+    addComment(comment,user,answerId,questionId ){
         let commentBody = {
-            _id : uuid.v4,
-            comment : comment,
-            user: user
+            comment_description : comment,
+            username: user
         }
-        return this.getAllComment(answerId).then((commnetBody) => {
-            commnetBody.append(commentBody);
+        return this.getAnswerById(questionId,answerId).then((answerBody) => {
+            answerBody.comment.push(commentBody);
+            return this.updateQuestion(questionId,answerId,answerBody);
         });
+    },
+
+    updateQuestion(questionId,answerId,answer){
+        return QA.findOneAndUpdate({_id:questionId},{'$set':{"answer":answer}},{new:true}).then((question) => {
+        }); 
     },
 
     getCommentById(answerId,commentId){
@@ -133,10 +138,10 @@ let exportedMethods = {
 
     getAllComment(answerId){
         return this.getAnswerById(answerId).then((answer) => {
-            return answer.Comment;
+            return answer[0].comment;
         });
     },
-    deleteCommnet(answerId,commentId){
+    deleteCommnet(answerId,commentId,questionId){
         let answerBody = this.getAnswerById(answerId);
         return QA().then((QACollection) => {
 

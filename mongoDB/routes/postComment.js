@@ -1,74 +1,49 @@
-
 /* Router */
 const express = require('express');
 const router = express.Router();
 const data = require("../data");
 const mainData = data.main;
+const userData = data.users;
 
 /* **************************************************** */
 
 /* ********** Part of dealing with Question *********** */
 
 /* **************************************************** */
-router.get("/:id",(req,res) => {
-	if(req.isAuthenticated()){
-		mainData.getAllAnswer(req.params.id).then((questionBody) => {
-			res.render("Question_Detail/Question.handlebars",{
-					QuestionBody:questionBody,
-					answerArray:questionBody.answer,
-					questionId:questionBody._id,
-				});
-		});
+router.post("/:questionId/:answerId",(req,res) => {
+	if(req.body.postComment){
+		mainData.addComment(req.body.commentText,req.user.username)
 	}
-});
-
+})
 
 router.post("/:questionId",(req,res) => {
+	console.log("did go into here");
+	console.log(req.params.questionId);
 	let answer = {
 		username:req.user.username,
-		questionId:req.params.questionId,
 		answer_description : req.body.answerdescription,
 		agree :0,
 		disagree : 0,
 		comment :[]
 	};
+	console.log(answer);
 	return mainData.addAnswerToQuestion(req.params.questionId,answer).then((questionBody) => {
+		console.log(questionBody);
 		res.redirect(`/question/${req.params.questionId}`);
 	})
 })
 
-// router.post("/:questionid/:answerid",(req,res) => {
-// 	if(req.isAuthenticated()){
-// 		if(req.params.agreebtn){
-// 			return mainData.agreeAnswer(req.params.questionid,req.params.answerid).then(() => {
-// 				return res.redirect(`/question/${req.params.questionid}`);
-// 			});
-// 		}
-// 		if(req.params.disagreebtn){
-// 			return mainData.agreeAnswer(req.params.questionid,req.params.answerid).then(() => {
-
-// 				return res.redirect(`/question/`)
-// 			});
-// 		}
+// function isLoggedIn(req, res, next) {
+	
+// 		// if user is authenticated in the session, carry on
+// 		if (req.isAuthenticated())
+// 			return next();
+	
+// 		// if they aren't redirect them to the home page
+// 		console.log("Not Loggin");
+// 		res.redirect('/login');
+// 		next();
 // 	}
-// })
-
-// router.post("/:questionId/:answerId/postComment",(req,res) => {
-// 	return mainData.addComment(req.body.commentText,req.user.username,req.params.answerId,req.params.questionId).then(() => {
-// 		res.redirect(`question/${req.params.questionId}`)
-// 	})
-// })
-
-// router.get("/", (req, res) => {
-// 	if (req.isAuthenticated()) {
-// 		mainData.getAllQuestion().then((question) => {
-// 			console.log(question);
-// 			res.render("Main/index.handlebars", {questionArray:question})
-// 		});
-// 	} else {
-// 		res.redirect("/main")
-// 	}
-// });
 
 // router.put("question/:id", (req, res) => {
 // 	let updateQuestionBody = req.body;
@@ -96,6 +71,7 @@ router.post("/:questionId",(req,res) => {
 // router.post("/answer:id/"){
 // 	mainData.
 // }
+
 
 // router.get("/question:id/answer")
 module.exports = router;

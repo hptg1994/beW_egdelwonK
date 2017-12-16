@@ -100,12 +100,24 @@ header {
 }
 
 
-/* .main-content{
+.modal-header,.modal-body{
+    background-color: white;
+    z-index: 9999;
+}
+.modal-body input {
+    width:98%;
+    height: 30px;
+}
+.form-control {
+    width:98%;
+    height: 200px;
+}
+
+.header-cotain button{
     position: absolute;
-} */ 
-.PostQuestion{
     /* font-size: 120%; */
-    margin-top: 15px;
+    left:60%;
+    top:15px;
     padding: 5px 15px;
     border-radius: 5px;
     font-weight: 700;
@@ -113,28 +125,32 @@ header {
     color: rgba(15, 127, 232, 0.747);
 } 
 
-
-.header-contain {
+.title {
     color: white;
+    margin-left:20%;
 }
 
 
 .Navigation {
-    float: right;
-    margin-right: 7%;
-    margin-top: 20px;
-    margin-left: 20px;
+    position: absolute;
+    /* float: right; */
+    right:-350px;
+    top: 45px;
+    margin-right: 45%;
+    margin-top: -25px;
+    font-size: 110%;
+    /* margin-left: 20px; */
     list-style: none;
 }
 
 .Navigation li {
-
     display: inline-block;
     margin: 0 10px;
 }
 
 .Navigation li a {
     color: white;
+    text-decoration: none;
     font-size: 120%;
 }
 
@@ -187,15 +203,25 @@ section {
     margin-top: 2px;
     /* margin-bottom: 6px; */
 }
+.author{
+    margin-bottom: 15px;
+}
+
+.author p{
+    font-size: 120%;
+}
 
 .question a {
     color: black;
+    font-size: 160%;
+    text-decoration: none;
 }
 
 .answer {
-    margin-top: 2px;
-    margin-bottom: 8px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     padding-left: 5%;
+    font-size: 130%;
     /* margin-left: 50%; */
 }
 
@@ -224,11 +250,12 @@ section {
 /***********************************/
 
 footer {
+    position: absolute;
     width: 100%;
     /* height: 70px; */
     background-color: #333333;;
     padding: 50px;
-    font-size: 80%;
+    font-size: 120%;
     vertical-align: middle;
 }
 
