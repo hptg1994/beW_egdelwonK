@@ -157,7 +157,7 @@
     text-align: center;
     width: 100%;
 }
-.QuestionBox .btn-ask, .registerBox .btn-register{
+.QuestionBox .btn-ask{
     background-color: #F74933;
     border-color: #BBBBBB;
     border-width: 0;

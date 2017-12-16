@@ -17,6 +17,7 @@ const QA = mongoose.model('Question_Answer', {
     },
     answer:[{
         username:String,
+        questionId:String,
         answer_description:String,
         agree:Number,
         disagree:Number,

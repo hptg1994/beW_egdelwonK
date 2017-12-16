@@ -1,6 +1,7 @@
 /* Api Stuff */
 const mongoose = require("../config/mongoose");
 const {QA} = require("../Model/main");
+const user = require("../data/user")
 
 let exportedMethods = {
     /* **************************************************** */
@@ -8,16 +9,17 @@ let exportedMethods = {
     /* ********** Part of dealing with Question *********** */
     
     /* **************************************************** */
+
     getQuestionById(id){
-        return QA.find({_id:id}).exec().then((newQuestionbody) => {
-            return questionbody;
+        return QA.find({_id:id}).then((newQuestionbody) => {
+            return newQuestionbody[0];
         }).catch(error => {
             return error;
         });
     },
 
     getAllQuestion(){
-        return QA.find({}).exec().then((allquestion) => {
+        return QA.find({}).then((allquestion) => {
             return allquestion;
         });
     },
@@ -30,19 +32,28 @@ let exportedMethods = {
     //         return QAMap;
     //     })
     // },
-    createQuestion(newQuestion){
+    createQuestion(newQuestion,userId){
         var newQuestion = new QA(newQuestion);
+        // let question = undefined;
         return newQuestion.save(newQuestion).then((questionbody) => {
+            // question = questionbody;
             return questionbody;
-        }).catch((error) => {
-            return error;
-        });
+        });    
+        // .then((question) => {
+        //     return user.addQuestionToUser(userId,newQuestion);
+        // }).then(()=> {
+        //     return question;
+        // }).catch((error) => {
+        //     console.log(error);
+        //     return error;
+        // });
     },
 
     updateQuestion(questionId,newquestion){
         return QA.findOneAndUpdate({_id:questionId},{$set:newquestion},{new:true}).then((questionbody) => {
             return questionbody;
         }).catch((error) => {
+            console.log(error);
             return error;
         })
     },
@@ -60,13 +71,14 @@ let exportedMethods = {
 
     getAllAnswer(questionId){
         return this.getQuestionById(questionId).then((questionbody) => {
-            return questionbody.answer.toArray();
+            return questionbody;
         })
     },
 
     getAnswerById(questionId,answerId){
         return QA.find({_id:questionId}).then((questionbody) => {
-            let answerBody = questionbody.answer;
+
+            let answerBody = questionbody[0].answer;
             return answerBody.find((answer) => {
                 return answer._id = answerId;
             });
@@ -77,7 +89,6 @@ let exportedMethods = {
     },
 
     addAnswerToQuestion(questionId,answer){
-
         return QA.findOneAndUpdate({_id:questionId},{$push:{answer:answer}},{safe:true,upsert:true}).then((questionbody) => {
             return questionbody;
         })

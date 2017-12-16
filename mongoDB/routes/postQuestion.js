@@ -11,33 +11,32 @@ const userData = data.users;
 
 /* **************************************************** */
 
+// router.get("/",(req,res) => {
+// 	res.render("QuestionBox/QuestionBox.handlebars")
+// });
+
+
 router.post("/", (req, res) => {
 	let questionBody = {};
 	questionBody.title = req.body.question_input;
-	questionBody.description = req.body.description;
-	questionBody.answer = [];	
-	userData.getUserById(req.user._id).then((user) => {
-		let userQuestion ={};
-		userQuestion.question = req.body.question_input;
-		questionBody.username = user.username;
-	}).then(() => {
-		console.log(questionBody);
-		userData.addQuestionToUser(userQuestion,req._id);
-		mainData.createQuestion(questionBody).then((question) => {
-			res.redirect("/"+question._id);
-		},() => {
-			res.sendStatus(500);
-		})
-	})
+	questionBody.username = req.user.username;
+	console.log(questionBody.username);
+	questionBody.description = req.body.question_description;
+	questionBody.answer = [];
 
-
-	return mainData.createQuestion(questionBody.title, questionBody.user, questionBody.question).then(questionid => {
-		return mainData.getQuestionById(questionid).then(questions => {
-			res.json(questions);
-		});
+	// userData.addQuestionToUser(userQuestion, req._id);
+	return mainData.createQuestion(questionBody,req.user._id).then((question) => {
+		res.redirect(`/question/${question._id}`);
 	});
-
 });
+
+// userData.getUserById(req.user._id).then((user) => {
+// 	let userQuestion = {};
+// 	userQuestion.question = req.body.question_input;
+// 	questionBody.username = user.username;
+// }).then(() => {
+
+
 
 // router.put("question/:id", (req, res) => {
 // 	let updateQuestionBody = req.body;

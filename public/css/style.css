@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 html {
@@ -9,6 +9,7 @@ html {
     font-weight: 300;
     text-rendering: optimizeLegibility;
     font-size: 20px;
+    background-color: #F1F1F1;
 }
 
 .cleanfix {
@@ -35,17 +36,12 @@ html {
 
 /***********************************/
 
-.row {
-    max-width: 1140px;
-    margin: 0 auto;
-}
-
 h1 {
     font-weight: 300px;
     letter-spacing: 3px;
 }
 
-.btn {
+.btnbtn {
     /* list-style: none; */
     /* width:8%; */
     display: inline-block;
@@ -58,18 +54,18 @@ h1 {
     /* padding: 10px; */
 }
 
-.btn:link,
-.bth:visited {
+.btnbtn:link,
+.bthbtn:visited {
     background-color: rgba(15, 127, 232, 0.295);
 }
 
-.btn:hover,
-.btn:active {
+.btnbtn:hover,
+.btnbtn:active {
     background-color: #F1F1F1;
     transition: background-color 0.3s
 }
 
-.btn a {
+.btnbtn a {
     text-decoration: none;
     color: rgba(15, 127, 232, 0.849);
 }
@@ -109,8 +105,7 @@ header {
 } */ 
 .PostQuestion{
     /* font-size: 120%; */
-    margin-top: 12px;
-    margin-left: -150px;
+    margin-top: 15px;
     padding: 5px 15px;
     border-radius: 5px;
     font-weight: 700;
@@ -118,22 +113,16 @@ header {
     color: rgba(15, 127, 232, 0.747);
 } 
 
-.title {
-    margin:15px 7%;
-}
 
 .header-contain {
     color: white;
 }
 
-.header-contain div {
-    display: inline;
-}
 
 .Navigation {
-    /* float: right; */
+    float: right;
     margin-right: 7%;
-    margin-top: 12px;
+    margin-top: 20px;
     margin-left: 20px;
     list-style: none;
 }
@@ -146,6 +135,7 @@ header {
 
 .Navigation li a {
     color: white;
+    font-size: 120%;
 }
 
 section {

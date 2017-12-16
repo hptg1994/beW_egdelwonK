@@ -1,33 +1,24 @@
-/*
- *
- * login-register modal
- * Autor: Creative Tim
- * Web-autor: creative.tim
- * Web script: #
- *
- */
-function showLoginForm(){
+function showQuestionBoxForm(){
     $('#QuestionBoxModal').fadeOut('fast',function(){
         $('.QuestionBox').fadeIn('fast');
-        $('.modal-title').html('Login with');
     });
      $('.error').removeClass('alert alert-danger').html('');
 }
 
 function openQuestionBoxModal(){
-    showLoginForm();
+    showQuestionBoxForm();
     setTimeout(function(){
         $('#QuestionBoxModal').modal('show');
     }, 230);
 
 }
-function openRegisterModal(){
-    showRegisterForm();
-    setTimeout(function(){
-        $('#QuestionBoxModal').modal('show');
-    }, 230);
+// function openRegisterModal(){
+//     showRegisterForm();
+//     setTimeout(function(){
+//         $('#QuestionBoxModal').modal('show');
+//     }, 230);
 
-}
+// }
 
 function loginAjax(){
     /*   Remove this comments when moving to server

@@ -6,21 +6,20 @@
             <a href="/login">Log In</a>
             <a href="/signup">Sign Up </a>
         </div>
-        <div class="row">
             <form action="/login" method="post" class="Login-form">
                 <div class="row usernameInput">
-                    <div class="col span-1-of-3">
+                    <div class="span2">
                         <label for="Username">Username</label>
                     </div>
-                    <div class="col span-2-of-3">
+                    <div class="span4 usernameform">
                         <input type="text" name="username" id="Username" placeholder="Your Username" required>
                     </div>
                 </div>
                 <div class="row passwordInput">
-                    <div class="col span-1-of-3">
+                    <div class="span2">
                         <label for="password">Password</label>
                     </div>
-                    <div class="col span-2-of-3">
+                    <div class="span4 passwordform" >
                         <input type="text" name="password" id="password" placeholder="Your Password" required>
                     </div>
                 </div>
@@ -28,7 +27,6 @@
                     <input type="submit" value="Log in">
                 </div>
             </form>
-        </div>
         {{!-- {{#if error}}
         <div style="color:#ee0000;">
             <span>{{message}}</span>

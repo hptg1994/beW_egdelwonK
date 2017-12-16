@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Knowledge</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
-
-    <link rel="stylesheet" href="../../public/css/QuestionStyle.css">
-    <link rel="stylesheet" href="../../public/css/normalize.css">
-    <link rel="stylesheet" href="../../public/css/grid.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 
 <body>
     <header>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+        
+        <link rel="stylesheet" href="../../public/css/QuestionStyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <nav>
             <div class="blur"></div>
             <div class="row header-contain">
@@ -143,18 +141,24 @@
             </div>
         </div>
     </section>
+    <section class = "Write_answer_section">
+        <form action="/question/{{_id}}" method="post">
+            <textarea placeholder="Write down your answer" name="answer_input" id="answer_input"/>
 
-    <!-- {{#if question.length}}
+        </form>
+
+    </section>
+
+    {{#if question.length}}
     <footer>
         <div class="row Producer">
             <p>Copyright&copy;2017 by Pintaigao He.All right reserved</p>
         </div>
     </footer>
-    {{/if}} -->
+    {{/if}}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../public/JS/jquery.waypoints.min.js"></script>
     <script src="../../public/js/QuestionScript.js"></script>
 </body>
-
 </html>

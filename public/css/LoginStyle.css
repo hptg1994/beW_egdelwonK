@@ -1,10 +1,4 @@
-* {
-    margin-top: 0;
-    /* margin-left: 4%; */
-    /* margin-right: 4%; */
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 html {
     font-family: 'Lato', 'Arial', sans-serif;
@@ -14,12 +8,9 @@ html {
     background-color: #F6F9FC;
 }
 
-body {
-    position: relative;
-}
-
 header {
-    margin: 15% 0;
+    margin: 13% 0;
+    background-color: #F6F9FC;
 }
 
 
@@ -31,10 +22,7 @@ header {
 
 /***********************************/
 
-.row {
-    max-width: 1140px;
-    margin: 0 auto;
-}
+
 
 .Login-btn,
 .Signup-btn {
@@ -42,6 +30,7 @@ header {
     left: 50%; */
     text-align: center;
     /* width: 50%; */
+    font-size: 130%;
     text-decoration: none;
     /* margin-top: 25px; */
     margin: 25px auto;
@@ -53,7 +42,6 @@ header {
 
 .Login-btn,
 .Signup-btn input {
-
     font-size: 105%;
     font-weight: 400;
     color: rgba(15, 127, 232, 0.849);
@@ -72,7 +60,7 @@ header {
 
 h1 {
     font-weight: 400;
-    font-size: 240%;
+    font-size: 400%;
     text-align: center;
     letter-spacing: 2px;
     color: rgba(15, 127, 232, 0.849);
@@ -89,13 +77,14 @@ h1 {
 
 .selection {
     text-align: center;
-    margin: 20px auto;
+    margin: 30px auto;
     /* margin-left: 20px */
 }
 
 .selection a {
     color: gray;
     margin: 0 10px;
+    font-size: 200%;
     text-decoration: none;
 }
 
@@ -105,18 +94,37 @@ h1 {
     margin: 0 auto;
 }
 
-.usernameInput {
-    margin-bottom: 10px;
-    vertical-align: middle;
+
+.usernameInput label,
+.passwordInput label{
+    font-size: 130%;
+    padding-top: 10px;
+    margin-left: 40px;
+
 }
 
-input {
+.usernameform input{
+    padding: 10px;
     width: 100%;
-    padding: 7px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px dotted gray;
+}
+.passwordform input{
+    padding: 10px;
+    width: 100%;
+    padding: 10px;
     border-radius: 4px;
     border: 1px dotted gray;
 }
 
-.ConfirmPasswordBox{
-    padding-top: 11px;
+.Login-btn input{
+    width: 50%;
+    color:white;
+    padding: 10px;
+    font-size: 120%;
+    border-radius: 4px;
+    background-color: rgba(15, 127, 232, 0.849);
+    border: 1px dotted gray;
 }
+

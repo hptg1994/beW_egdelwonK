@@ -13,7 +13,7 @@ const mainData = data.main;
 router.get("/", (req, res) => {
 	if (req.isAuthenticated()) {
 		mainData.getAllQuestion().then((question) => {
-			res.render("Main/index.handlebars", {question})
+			res.render("Main/index.handlebars", {questionArray:question})
 		});
 	} else {
 		res.redirect("/main")
