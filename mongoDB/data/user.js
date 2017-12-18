@@ -4,6 +4,7 @@ const { User } = require("../Model/user");
 const ObjectID = require("mongodb");
 
 let exportedMethods = {
+
     getUserById(userId) {
         return User.find({_id:userId},function(err,user){
             if(err) throw "Can't find this user";
@@ -41,6 +42,20 @@ let exportedMethods = {
             });
     },
 
+    addAnswerToUser(userId,answer,question){
+        return User.find({_id:userId}).then(user => {
+            let newAnswer = {
+                questionTitle:question.title,
+                answerId:answer._id,
+                answer:answer,
+            };
+            user[0].userAnswer.push(newAnswer);
+            return this.updateUser(userId,user[0]);
+        }).then(user => {
+            return user;
+        })
+    },
+
     updateUser(userId,user){
        return User.findOneAndUpdate({ _id:userId},{$set:user},{new:true}).then((user) => {
             if(!user) {
@@ -54,8 +69,14 @@ let exportedMethods = {
 
     getQuestionByUserId(userId) {
         return User.find({_id:userId}).then(user => {
-            return user.userQuestion;
+            return user[0].userQuestion;
         });
+    },
+
+    getAnswerByUserId(userId) {
+        return User.find({_id:userId}).then(user => {
+            return user[0].userAnswer;
+        })
     }
 }
 

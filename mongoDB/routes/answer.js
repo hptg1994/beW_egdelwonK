@@ -33,7 +33,7 @@ router.post("/:questionId/postAnswer",(req,res) => {
 		disagree : 0,
 		comment :[]
 	};
-	return mainData.addAnswerToQuestion(req.params.questionId,answerbody).then((questionBody) => {
+	return mainData.addAnswerToQuestion(req.user._id,req.params.questionId,answerbody).then((questionBody) => {
 		res.redirect(`/question/${req.params.questionId}`);
 	})
 })

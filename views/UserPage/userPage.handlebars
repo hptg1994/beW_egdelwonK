@@ -1,0 +1,92 @@
+<header>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/css/UserPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <nav>
+        <div class="blur"></div>
+        <div class="header-cotain">
+            <h1 class="title" onclick="location.href='/main';">Knowledge</h1>
+            <button type="submit" class="PostQuestion" data-toggle="modal" data-target="#myModal">Ask</button>
+            <ul class="Navigation">
+                <li>
+                    <a href="/userPage/">My Page</a>
+                </li>
+                <li>
+                    <a href="/login">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<section class="intent-space">
+</section>
+
+<section class="question-section">
+    <div class="container">
+        <div class="question-box jq-question-box">
+
+            <div class="question">
+                <a href="#">My Pages</a>
+            </div>
+            <div class="questionDesctiption">
+                <p>{{user.username}}</p>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</section>
+<h2>
+    Your Post Answer
+</h2>
+{{#each answerArray}}
+<div class="answer_and_comment">
+    <section class="answer-section">
+        <div class="container">
+
+            <div class="answer-box">
+                <div class="Author">
+                    <p>{{username}}</p>
+                </div>
+                <div class="answer">
+                    <p>{{answer}}</a>
+                </div>
+                <div class="from question">
+                    <p>From : {{questionTitle}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{{/each}}
+
+<hr width="100%" size="3" color="#00ffff" style="filter:progid:DXImageTransform.Microsoft.Shadow(color:#f6ae56,direction:145,strength:15)"> 
+<h2>
+    Your Post Question
+</h2>
+{{#each questionArray }}
+
+<div class="answer_and_comment">
+    <section class="answer-section">
+        <div class="container">
+            <div class="answer-box">
+                <div class="answer">
+                    <a href="/question/{{questionId}}">{{question}}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{{/each}} {{#if question.length}}
+<footer>
+    <div class="row Producer">
+        <p>Copyright&copy;2017 by Pintaigao He.All right reserved</p>
+    </div>
+</footer>
+{{/if}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../../public/bootstrap/js/bootstrap.min.js"></script>
+<script src="../public/JS/jquery.waypoints.min.js"></script>
+<script src="../../public/js/QuestionScript.js"></script>

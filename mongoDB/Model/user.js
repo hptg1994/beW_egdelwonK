@@ -14,10 +14,10 @@ const userSchema = new Schema({
         question: String,
         required:false,
     }],
-    userComment:[{
-        questionId:String,
-        commentId:String,
-        comment:String,
+    userAnswer:[{
+        questionTitle:String,
+        answerId:String,
+        answer:String,
         required:false
     }]
 });

@@ -25,10 +25,7 @@ body{
     height: 0;
 }
 
-p{
-    word-break:break-all; 
-    width:90%;
-}
+
 /***********************************/
 
 
@@ -41,6 +38,17 @@ p{
 h1 {
     font-weight: 300px;
     letter-spacing: 3px;
+    
+}
+
+h2{
+    
+    margin:20px 40%;
+
+}
+
+a{
+    text-decoration: none;
 }
 
 .btnbtn {
@@ -207,10 +215,16 @@ section {
     background-color: #F1F1F1;
 }
 
+p{
+    word-break:break-all; 
+    width:90%;
+}
+
 .question-box {
     /* margin-bottom: 15px; */
     /* margin-left: 10%; */
     border-radius: 5px;
+    height:100px;
     /* padding: 15px; */
     background-color: white;
     box-shadow: 0 0px 2px rgba(128, 128, 128, 0.514);
@@ -239,7 +253,7 @@ section {
 .questionDesctiption{
     padding-top: 10px;
     
-    font-size: 120%;
+    font-size: 300%;
 }
 
 /* .answer {
@@ -335,9 +349,9 @@ form{
 
 .submit-btn{
     position: absolute;
-    top:100px;
+    top:110px;
     /* background-color: black; */
-    right:20%;
+    right:34%;
     /* width: 80%;  */
     /* margin-top: -8px; */
     /* background-color: white; */

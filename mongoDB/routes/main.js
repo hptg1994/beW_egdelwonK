@@ -13,10 +13,12 @@ const mainData = data.main;
 router.get("/", (req, res) => {
 	if (req.isAuthenticated()) {
 		mainData.getAllQuestion().then((question) => {
-			res.render("Main/index.handlebars", {questionArray:question})
+			res.render("Main/index.handlebars", {
+				userId : req.user._id,
+				questionArray:question})
 		});
 	} else {
-		res.redirect("/main")
+		res.redirect("/main");
 	}
 });
 
@@ -35,13 +37,14 @@ router.get("/:id", (req, res) => {
 	});
 });
 
+
+
 // router.post("/", (req, res) => {
 // 	let questionBody = req.body;
 // 	return mainData.createQuestion(questionBody.title, questionBody.user, questionBody.question).then(questionid => {
 // 			res.json(questions);
 // 		});
 // 	});
-
 // });
 
 // router.put("question/:id", (req, res) => {

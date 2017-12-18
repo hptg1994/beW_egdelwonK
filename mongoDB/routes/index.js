@@ -7,8 +7,10 @@ const postRoutes = require('./postQuestion');
 const userRoutes = require("./user");
 const loginRoute = require("./login");
 const signupRoute = require("./signup");
+const userPage = require("./userPages");
 
 const constructorMethod = (app) => {
+    app.use("/userPage",userPage);
     app.use("/question",answer)
     app.use("/login",loginRoute);
     app.use("/signup", signupRoute);

@@ -225,6 +225,12 @@ section {
     /* margin-left: 50%; */
 }
 
+.answer p{
+    
+    word-break:break-all; 
+    width:90%;
+}
+
 
 /***********************************/
 

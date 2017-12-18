@@ -20,15 +20,30 @@ router.post("/", (req, res) => {
 	let questionBody = {};
 	questionBody.title = req.body.question_input;
 	questionBody.username = req.user.username;
-	console.log(questionBody.username);
 	questionBody.description = req.body.question_description;
 	questionBody.answer = [];
-
 	// userData.addQuestionToUser(userQuestion, req._id);
 	return mainData.createQuestion(questionBody,req.user._id).then((question) => {
 		res.redirect(`/question/${question._id}`);
 	});
 });
+
+
+
+// userData.getUserById(req.user._id).then((user) => {
+// 	let userQuestion = {};
+// 	userQuestion.question = req.body.question_input;
+// 	questionBody.username = user.username;
+// 	userData.addQuestionToUser(userQuestion, req._id);
+// });
+
+	// userData.getUserById(req.user._id).then((user) => {
+// 	let userQuestion = {};
+// 	userQuestion.question = req.body.question_input;
+// 	questionBody.username = user.username;
+// }).then(() => {
+
+
 
 // userData.getUserById(req.user._id).then((user) => {
 // 	let userQuestion = {};
